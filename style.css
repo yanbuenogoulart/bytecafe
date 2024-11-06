@@ -19,6 +19,23 @@ header {
     align-items: center;
 }
 
+/* Adiciona uma classe para o botão do header */
+.header-button {
+    padding: 10px 20px;
+    background-color: #390879;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Transição suave */
+}
+
+/* Efeito de hover para aumentar o botão 1.2x */
+.header-button:hover {
+    transform: scale(1.2); /* Aumenta em 1.2x */
+    background-color: #1d0458; /* Cor alterada no hover */
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -36,6 +53,61 @@ header {
     border-radius: 30%; /* Torna a imagem circular */
     border: 3px solid white; /* Borda branca ao redor do círculo */
     object-fit: cover; 
+}
+
+.mainBoxServ {
+    margin: 30px auto; /* Centraliza o box na tela */
+    border-radius: 30px; /* Bordas suavizadas */
+    border: 0px solid black; /* Cor e espessura da borda */
+    background-color: white;
+    width: 95%; /* Tamanho em relação à largura da tela */
+    padding: 20px; /* Espaçamento interno */
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    align-items: center;
+    margin-top: 20px;  
+
+}
+
+.mainBoxCunha {
+    margin: 30px auto; /* Centraliza o box na tela */
+    border-radius: 30px; /* Bordas suavizadas */
+    border: 0px solid black; /* Cor e espessura da borda */
+    background-color: white;
+    width: 95%; /* Tamanho em relação à largura da tela */
+    padding: 20px; /* Espaçamento interno */
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    align-items: center;
+    margin-top: 20px;  
+
+}
+
+.mainBoxServ div {
+    flex-basis: 450px;
+}
+
+.mainBoxServ div h1 {
+    margin-bottom: 25px;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: underline 2px #390879;
+}
+
+.mainBoxServ div img {
+    width: 90%;
+    height: 300px;
+}
+
+.mainBoxServ div p {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-bottom: 15px;
+    font-size: 16px;
+    margin-left: 20px;
 }
 
 .mainBox {
@@ -61,6 +133,7 @@ header {
     margin-left: 20px;
 }
 
+
 nav ul {
     list-style-type: none;
     display: flex;
@@ -77,6 +150,34 @@ nav ul {
     margin: auto;
 }
 
+.img2 {
+    border-radius: 7%;
+    border: 4px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.buttonzada {
+    background-color: #390879;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    margin: 20px auto;
+    transition: transform 0.3s ease; /* Adiciona transição suave para o efeito de crescimento */
+}
+
+.buttonzada:hover {
+    transform: scale(1.2); /* Aumenta o botão em 1.5x */
+    background-color: #1d0458; /* Cor de fundo ao passar o mouse */
+}
+
+
 footer {
     background-color: #390879;
     color: white;
@@ -89,12 +190,25 @@ footer {
     width: 100%;
 }
 
+
+
 .lista {
     text-align: center;
     font-weight: bold;
     font-size: 19px;
-    margin-left: 50px;
+    margin: 0 auto; /* Centraliza completamente */
+    width: fit-content; /* Ajusta a largura ao conteúdo, centralizando no contêiner */
 }
+
+.titulozada {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    margin: 0 auto; /* Centraliza completamente */
+    width: fit-content; /* Ajusta a largura ao conteúdo, centralizando no contêiner */
+}
+
+
 
 .listada {
     margin-left: 25px;
@@ -161,6 +275,12 @@ nav ul li a:hover {
 @media (max-width: 480px) {
     nav ul li {
         margin: 2px; /* Diminui o espaçamento entre os itens de navegação */
+    }
+
+    .lista {
+        font-size: 18px;
+        margin: 0 auto; /* Mantém centralizada em telas menores */
+        width: fit-content;
     }
 
     .logo {

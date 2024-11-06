@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteCafe - Ordenação</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ordenacao.css">
+    <link rel="shortcut icon" href="https://i.pinimg.com/originals/a4/a5/a0/a4a5a0f81984ff159866ebedf3032bd4.png" type="image/x-icon">
+    <script src="ordenacao.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://i.pinimg.com/originals/a4/a5/a0/a4a5a0f81984ff159866ebedf3032bd4.png" alt="Logo" class="logozada">
+            <h1>ByteCafe</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./servicos.html">Serviços</a></li>
+                <li><a href="./exemplos.html">Exemplos</a></li>
+                <li><a href="./contato.html">Contato</a></li>
+                <li><a href="./servicos.html">Redes</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="mainBox ">
+        <h1>Sistemas de Ordenação</h1>
+        <div class="sort-section">
+            <h2>Ordenação de Números</h2>
+        
+            <!-- Seleção do método de ordenação -->
+            <label for="sort-method">Escolha o método de ordenação:</label>
+            <select id="sort-method">
+                <option value="bubble">Bubble Sort</option>
+                <option value="insertion">Insertion Sort</option>
+                <option value="selection">Selection Sort</option>
+            </select>
+        
+            <!-- Inputs para intervalo de números aleatórios -->
+            <label for="min-value">Valor mínimo:</label>
+            <input type="number" id="min-value" placeholder="Ex: 1">
+        
+            <label for="max-value">Valor máximo:</label>
+            <input type="number" id="max-value" placeholder="Ex: 100">
+        
+            <!-- Input para quantidade de números -->
+            <label for="array-size">Quantidade de números:</label>
+            <input type="number" id="array-size" placeholder="Ex: 10">
+        
+            <!-- Botão para gerar a array e ordenar -->
+            <button onclick="generateAndSort()">Gerar e Ordenar</button>
+        
+            <!-- Exibição dos resultados -->
+            <p id="original-array"></p>
+            <p id="sorted-array"></p>
+            <p id="iterations-count"></p>
+        </div>
+
+        <!-- Explicações sobre os algoritmos -->
+        <div class="algorithms-explanation">
+            <h2>Como funcionam os algoritmos de ordenação?</h2>
+            <p><strong>Bubble Sort:</strong> O algoritmo Bubble Sort compara elementos adjacentes e os troca de posição até que a lista esteja ordenada. Ele é simples, mas ineficiente para grandes listas, com complexidade O(n²).</p>
+            <p><strong>Melhor uso:</strong> Pequenas listas ou listas quase ordenadas.</p>
+            <br>
+
+            <p><strong>Insertion Sort:</strong> O algoritmo Insertion Sort constrói uma lista ordenada, inserindo um elemento por vez em sua posição correta. Também tem complexidade O(n²), mas pode ser mais eficiente que o Bubble Sort em alguns casos.</p>
+            <p><strong>Melhor uso:</strong> Listas pequenas ou quase ordenadas.</p>
+            <br>
+
+            <p><strong>Selection Sort:</strong> O Selection Sort seleciona repetidamente o menor elemento e o coloca na posição correta. Ele também tem complexidade O(n²), mas é mais eficiente que o Bubble Sort, pois faz menos trocas.</p>
+            <p><strong>Melhor uso:</strong> Pequenas listas ou quando o número de trocas deve ser minimizado.</p>
+            <br>
+
+            <h3>Arrow Function e appendChild</h3>
+            <p><strong>Arrow Function:</strong> Uma Arrow Function é uma forma simplificada de escrever funções em JavaScript. Ao contrário das funções tradicionais, ela não possui o seu próprio contexto de "this", o que pode ser útil em alguns cenários.</p>
+            <pre><code>const soma = (a, b) => a + b;</code></pre>
+            <p><strong>appendChild:</strong> O método <code>appendChild</code> permite adicionar um elemento filho a outro no DOM (Document Object Model). Ele é comumente usado para manipular a estrutura da página.</p>
+            <pre><code>document.body.appendChild(newElement);</code></pre>
+        </div>
+    </div>
+</body>
+</html>
