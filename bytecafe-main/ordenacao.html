@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteCafe - Ordenação</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ordenacao.css">
+    <link rel="shortcut icon" href="https://i.pinimg.com/originals/a4/a5/a0/a4a5a0f81984ff159866ebedf3032bd4.png" type="image/x-icon">
+    <script src="ordenacao.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="./index.html">
+                <img src="https://i.pinimg.com/originals/a4/a5/a0/a4a5a0f81984ff159866ebedf3032bd4.png" alt="Logo" class="logozada">
+                <h1>ByteCafe</h1>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./index.html" class="header-button">Home</a></li>
+                <li><a href="./servicos.html" class="header-button">Serviços</a></li>
+                <li><a href="./contato.html" class="header-button">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="mainBox ">
+        <h1>Sistemas de Ordenação</h1>
+        <div class="sort-section">
+            <h2>Ordenação de Números</h2>
+
+            <label for="sort-method">Escolha o método de ordenação:</label>
+            <br><br>
+            <select id="sort-method">
+                <option value="bubble">Bubble Sort</option>
+                <option value="insertion">Insertion Sort</option>
+                <option value="selection">Selection Sort</option>
+            </select>
+            <br><br>
+            <label>
+                Decrescente
+                <input type="checkbox" id="sort-order">
+            </label>
+            <br><br>
+
+            <label for="min-value">Valor mínimo:</label>
+            <input type="number" id="min-value" placeholder="Ex: 1">
+            <br><br>
+            <label for="max-value">Valor máximo:</label>
+            <input type="number" id="max-value" placeholder="Ex: 100">
+            <br><br>
+            <label for="array-size">Quantidade de números:</label>
+            <input type="number" id="array-size" placeholder="Ex: 10">
+            <br><br>
+            <button onclick="generateAndSort()">Gerar e Ordenar</button>
+
+            <p id="original-array"></p>
+            <p id="sorted-array"></p>
+            <p id="iterations"></p>
+        </div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/9IELL7pPXl4?si=YQCuVVRkm5Q0xcdG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <button id="show-more-btn" class="buttonzada">Mostrar mais</button>
+        <div id="extra-content"></div>
+    </div>
+
+    <script>
+        const extraHtmlContent = `
+            <div class="algorithms-explanation">
+                <h2>Como funcionam os algoritmos de ordenação?</h2>
+                <p><strong>Bubble Sort:</strong> O algoritmo Bubble Sort compara elementos adjacentes e os troca de posição
+                    até que a lista esteja ordenada. Ele é simples, mas ineficiente para grandes listas, com complexidade
+                    O(n²).</p>
+                <p><strong>Melhor uso:</strong> Pequenas listas ou listas quase ordenadas.</p>
+                <br>
+
+                <p><strong>Insertion Sort:</strong> O algoritmo Insertion Sort constrói uma lista ordenada, inserindo um
+                    elemento por vez em sua posição correta. Também tem complexidade O(n²), mas pode ser mais eficiente que
+                    o Bubble Sort em alguns casos.</p>
+                <p><strong>Melhor uso:</strong> Listas pequenas ou quase ordenadas.</p>
+                <br>
+
+                <p><strong>Selection Sort:</strong> O Selection Sort seleciona repetidamente o menor elemento e o coloca na
+                    posição correta. Ele também tem complexidade O(n²), mas é mais eficiente que o Bubble Sort, pois faz
+                    menos trocas.</p>
+                <p><strong>Melhor uso:</strong> Pequenas listas ou quando o número de trocas deve ser minimizado.</p>
+                <br>
+
+                <h3>Arrow Function e appendChild</h3>
+                <p><strong>Arrow Function:</strong> Uma Arrow Function é uma forma simplificada de escrever funções em
+                    JavaScript. Ao contrário das funções tradicionais, ela não possui o seu próprio contexto de "this", o
+                    que pode ser útil em alguns cenários.</p>
+                <pre><code>const soma = (a, b) => a + b;</code></pre>
+                <p><strong>appendChild:</strong> O método <code>appendChild</code> permite adicionar um elemento filho a
+                    outro no DOM (Document Object Model). Ele é comumente usado para manipular a estrutura da página.</p>
+                <pre><code>document.body.appendChild(newElement);</code></pre>
+                <br>
+                <h3>Exemplo de Programas</h3><br>
+                <p><strong>While:</strong> Um exemplo é o método de ordenação Insertion Sort</p>
+                <p><strong>For:</strong> Um exemplo é um programa que cria uma matriz</p>
+                <p><strong>If e Elseif:</strong> Um exemplo são as notas da escola. Caso sejam maiores ou iguais a 7, você passou, se não, se for igual 6, você está no conselho, se não, reprovado.</p>
+            </div>
+        `;
+
+        document.getElementById("show-more-btn").onclick = () => {
+            const extraContent = document.createElement("div");
+            extraContent.innerHTML = extraHtmlContent;
+            document.getElementById("extra-content").appendChild(extraContent);
+
+            document.getElementById("show-more-btn").style.display = "none";
+        };
+    </script>
+</body>
+
+</html>
