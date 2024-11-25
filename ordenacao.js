@@ -3,54 +3,51 @@ function generateAndSort() {
     const maxValue = parseInt(document.getElementById("max-value").value);
     const arraySize = parseInt(document.getElementById("array-size").value);
     const sortMethod = document.getElementById("sort-method").value;
-    const isDescending = document.getElementById("sort-order").checked; // Checkbox de ordem
+    const arrayDecrescente = document.getElementById("sort-order").checked;
 
-    if (isNaN(minValue) || isNaN(maxValue) || isNaN(arraySize)) {
+    if (isNaN(minValue) || isNaN(maxValue) || isNaN(arraySize) || arraySize < 1) {
         alert("Por favor, insira todos os valores corretamente.");
         return;
     }
 
-    const array = Array.from({ length: arraySize }, () => 
-        Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue
-    );
-
-    document.getElementById("original-array").innerText = `Array original: [${array.join(", ")}]`;
+    const array = [];
+    for (let i = 0; i < arraySize; i++) {
+        array.push(Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue);
+    }
 
     let sortedArray, iterations;
-    switch (sortMethod) {
-        case "bubble":
-            ({ sortedArray, iterations } = bubbleSort(array));
-            break;
-        case "insertion":
-            ({ sortedArray, iterations } = insertionSort(array));
-            break;
-        case "selection":
-            ({ sortedArray, iterations } = selectionSort(array));
-            break;
-        default:
-            alert("Método de ordenação inválido.");
-            return;
+    if (sortMethod === "bubble") {
+        ({ sortedArray, iterations } = bubbleSort(array, arrayDecrescente));
+    } else if (sortMethod === "insertion") {
+        ({ sortedArray, iterations } = insertionSort(array, arrayDecrescente));
+    } else {
+        ({ sortedArray, iterations } = selectionSort(array, arrayDecrescente));
     }
 
-    if (isDescending) {
-        sortedArray.reverse();
-    }
-
+    document.getElementById("original-array").innerText = `Array original: [${array.join(", ")}]`;
     document.getElementById("sorted-array").innerText = `Array ordenada: [${sortedArray.join(", ")}]`;
-    document.getElementById("iterations-count").innerText = `Quantidade de iterações: ${iterations}`;
+    document.getElementById("iterations").innerText = `Quantidade de iterações: ${iterations}`;
 }
 
-
-// Algoritmo Bubble Sort
-function bubbleSort(array) {
+function bubbleSort(array, arrayDecrescente) {
     const arr = [...array];
     let iterations = 0;
 
     for (let i = 0; i < arr.length - 1; i++) {
         for (let j = 0; j < arr.length - i - 1; j++) {
-            iterations++;
-            if (arr[j] > arr[j + 1]) {
-                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+            iterations++; // Conta cada iteração
+            if (arrayDecrescente) {
+                if (arr[j] < arr[j + 1]) {
+                    const temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            } else {
+                if (arr[j] > arr[j + 1]) {
+                    const temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
             }
         }
     }
@@ -58,44 +55,50 @@ function bubbleSort(array) {
     return { sortedArray: arr, iterations };
 }
 
-function insertionSort(array) {
+function insertionSort(array, arrayDecrescente) {
     const arr = [...array];
     let iterations = 0;
 
     for (let i = 1; i < arr.length; i++) {
-        let key = arr[i];
+        const key = arr[i];
         let j = i - 1;
 
-        while (j >= 0 && arr[j] > key) {
-            arr[j + 1] = arr[j];
-            j = j - 1;
-            iterations++;
+        while (j >= 0) {
+            iterations++; // Conta cada iteração
+            if (arrayDecrescente ? arr[j] < key : arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            } else {
+                break;
+            }
         }
+
         arr[j + 1] = key;
-        iterations++;
     }
 
     return { sortedArray: arr, iterations };
 }
 
-// Algoritmo Selection Sort
-function selectionSort(array) {
+function selectionSort(array, arrayDecrescente) {
     const arr = [...array];
     let iterations = 0;
 
     for (let i = 0; i < arr.length - 1; i++) {
-        let minIdx = i;
+        let key = i;
+
         for (let j = i + 1; j < arr.length; j++) {
-            iterations++;
-            if (arr[j] < arr[minIdx]) {
-                minIdx = j;
+            iterations++; // Conta cada iteração
+            if (arrayDecrescente ? arr[j] > arr[key] : arr[j] < arr[key]) {
+                key = j;
             }
         }
-        if (minIdx !== i) {
-            [arr[i], arr[minIdx]] = [arr[minIdx], arr[i]];
+
+        if (key !== i) {
+            const temp = arr[i];
+            arr[i] = arr[key];
+            arr[key] = temp;
         }
     }
 
     return { sortedArray: arr, iterations };
 }
-
